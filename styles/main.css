@@ -53,10 +53,11 @@ body {
     overflow-x: hidden;
     background: var(--color-black);
     line-height: 1.6;
+    scroll-snap-type: y proximity;
 }
 
 /* ============================================
-   HERO SECTION - Landing Page
+   CINEMATIC HERO SECTION - Premium Tribute
    ============================================ */
 .hero-section {
     position: relative;
@@ -66,117 +67,411 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
-/* Background Video */
-.hero-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: 1;
-}
-
-/* Overlay for text readability */
-.hero-overlay {
+/* Animated Background Gradient - Ultra Elegant */
+.hero-background-layer {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg,
-            rgba(10, 10, 10, 0.7) 0%,
-            rgba(26, 35, 50, 0.6) 50%,
-            rgba(10, 10, 10, 0.7) 100%);
-    z-index: 2;
+            #0a0e1a 0%,
+            #131824 15%,
+            #1a2332 30%,
+            #0f1520 50%,
+            #1a2332 70%,
+            #131824 85%,
+            #0a0e1a 100%);
+    background-size: 400% 400%;
+    animation: gradientFlow 25s ease infinite;
+    z-index: 1;
 }
 
-/* Hero Content */
-.hero-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: var(--color-white);
-    padding: var(--spacing-md);
-}
-
-.hero-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    margin-bottom: var(--spacing-md);
-    opacity: 0;
-}
-
-.title-line {
-    display: block;
-    font-size: clamp(2rem, 5vw, 4rem);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-gold);
-    text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-}
-
-.title-name {
-    display: block;
-    font-size: clamp(3rem, 8vw, 7rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
-}
-
-.hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.5rem);
-    font-weight: 300;
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    margin-top: var(--spacing-md);
-    opacity: 0;
-    color: var(--color-cream);
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
+/* Elegant multi-layer overlay with subtle gold shimmer */
+.hero-background-layer::before {
+    content: '';
     position: absolute;
-    bottom: var(--spacing-lg);
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    opacity: 0;
-    color: var(--color-white);
-    font-size: 0.9rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(100, 120, 180, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(10, 14, 26, 0.3) 0%, transparent 50%, rgba(10, 14, 26, 0.5) 100%);
+    animation: overlayPulse 12s ease-in-out infinite;
 }
 
-.scroll-arrow {
-    width: 2px;
-    height: 40px;
-    background: linear-gradient(to bottom, transparent, var(--color-gold));
-    margin: var(--spacing-sm) auto 0;
-    animation: scrollBounce 2s infinite;
+/* Subtle shimmer effect */
+.hero-background-layer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 50%);
+    animation: shimmerRotate 30s linear infinite;
 }
 
-@keyframes scrollBounce {
+@keyframes shimmerRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes overlayPulse {
 
     0%,
     100% {
-        transform: translateY(0);
-        opacity: 0.3;
+        opacity: 0.8;
     }
 
     50% {
-        transform: translateY(10px);
         opacity: 1;
+    }
+}
+
+@keyframes gradientFlow {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Mouse Glow Follower - Ultra Premium */
+.mouse-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+            rgba(255, 215, 0, 0.25) 0%,
+            rgba(192, 192, 192, 0.15) 30%,
+            rgba(255, 255, 255, 0.08) 50%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 9999;
+    filter: blur(60px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    will-change: transform;
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+}
+
+/* Spotlight Effect - Soft center glow */
+.hero-spotlight {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle,
+            rgba(255, 215, 0, 0.12) 0%,
+            rgba(212, 175, 55, 0.06) 30%,
+            transparent 70%);
+    border-radius: 50%;
+    z-index: 2;
+    animation: spotlightPulse 8s ease-in-out infinite;
+}
+
+@keyframes spotlightPulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Hero Content Container */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text-container {
+    opacity: 0;
+    animation: fadeInContent 2s ease 0.3s forwards;
+}
+
+@keyframes fadeInContent {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Typography - Ultra Premium Luxury */
+.employee-name {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: var(--spacing-md);
+    /* text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.6); */
+    background: linear-gradient(1deg, #070707 0%, #0c0c0c 50%, #0c0c0c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.bible-reference {
+    font-family: var(--font-display);
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    color: rgba(255, 215, 0, 0.9);
+    margin-top: var(--spacing-xs);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-greeting {
+    font-family: var(--font-body);
+    font-size: clamp(0.75rem, 1.2vw, 1rem);
+    font-weight: 300;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0;
+    animation: fadeInGreeting 1.5s ease 1.2s forwards;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeInGreeting {
+    to {
+        opacity: 1;
+    }
+}
+
+.hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 14vw, 14rem);
+    font-weight: 200;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    margin: 0;
+    padding: var(--spacing-md);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    /* Metallic Gold/Silver Gradient */
+    background: linear-gradient(135deg,
+            #C0C0C0 0%,
+            #FFD700 15%,
+            #FFFFFF 30%,
+            #FFD700 45%,
+            #C9C9C9 60%,
+            #FFD700 75%,
+            #FFFFFF 90%,
+            #D4AF37 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Premium Glow Effects */
+    filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 80px rgba(255, 255, 255, 0.3)) drop-shadow(0 5px 30px rgba(0, 0, 0, 0.5));
+
+    animation: luxuryShimmer 8s ease-in-out infinite;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    transform: translateZ(0);
+}
+
+@keyframes luxuryShimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 80px rgba(255, 255, 255, 0.3)) drop-shadow(0 5px 30px rgba(0, 0, 0, 0.5));
+    }
+
+    50% {
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 60px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 120px rgba(255, 255, 255, 0.5)) drop-shadow(0 5px 40px rgba(0, 0, 0, 0.6));
+    }
+}
+
+/* Scroll Indicator - Minimal & Elegant */
+.scroll-indicator {
+    position: absolute;
+    bottom: var(--spacing-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInScroll 1s ease 3s forwards;
+}
+
+@keyframes fadeInScroll {
+    to {
+        opacity: 0.6;
+    }
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom,
+            rgba(212, 175, 55, 0.6),
+            transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+}
+
+/* Responsive - Maintain Luxury on All Devices */
+@media (max-width: 1200px) {
+    .hero-name {
+        font-size: clamp(4rem, 12vw, 10rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-name {
+        font-size: clamp(3.5rem, 16vw, 7rem);
+        letter-spacing: 0.03em;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .hero-greeting {
+        font-size: 0.7rem;
+        letter-spacing: 0.4em;
+    }
+
+    .mouse-glow {
+        width: 200px;
+        height: 200px;
+    }
+
+    .hero-spotlight {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-name {
+        font-size: clamp(2.5rem, 18vw, 5rem);
+    }
+}
+
+/* ============================================
+   BIBLE VERSE SECTION - Fullscreen Snap
+   ============================================ */
+.bible-verse-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: var(--spacing-xl);
+}
+
+.bible-verse-content {
+    max-width: 900px;
+    text-align: center;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    border-radius: 12px;
+    padding: var(--spacing-xl);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(255, 215, 0, 0.2);
+}
+
+.bible-verse-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+.bible-verse-text {
+    font-family: var(--font-body);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    line-height: 1.8;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.95);
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 0.02em;
+}
+
+.bible-verse-reference {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    .bible-verse-section {
+        padding: var(--spacing-lg);
+    }
+
+    .bible-verse-content {
+        padding: var(--spacing-lg);
     }
 }
 
@@ -209,12 +504,13 @@ body {
 .image-container {
     width: 100%;
     height: 100%;
-    max-width: 600px;
-    max-height: 80vh;
-    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    background: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .employee-photo {
@@ -224,6 +520,9 @@ body {
     object-position: center;
     display: block;
     transition: var(--transition-smooth);
+    will-change: transform;
+    transform: scale(1.15) translateZ(0);
+    backface-visibility: hidden;
 }
 
 .image-container:hover .employee-photo {
@@ -354,6 +653,60 @@ body {
 }
 
 /* Continue pattern for more frames as needed */
+
+/* Video Audio Toggle Button */
+.video-audio-toggle {
+    position: absolute;
+    top: var(--spacing-xl);
+    right: var(--spacing-xl);
+    z-index: 20;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.video-audio-toggle:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.8);
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(255, 215, 0, 0.3);
+}
+
+.video-audio-toggle .audio-icon {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+}
+
+.video-audio-toggle:hover .audio-icon {
+    transform: scale(1.1);
+}
+
+.video-audio-toggle.active {
+    background: rgba(255, 215, 0, 0.3);
+    border-color: rgba(255, 215, 0, 1);
+}
+
+@media (max-width: 768px) {
+    .video-audio-toggle {
+        width: 50px;
+        height: 50px;
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+    }
+
+    .video-audio-toggle .audio-icon {
+        font-size: 1.5rem;
+    }
+}
 
 /* ============================================
    FINALE SECTION - Celebration
@@ -746,6 +1099,24 @@ body {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
 }
 
+.frame-7 .text-side {
+    background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+}
+
+.frame-8 .text-side {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+}
+
+.frame-9 .image-side {
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    /* Deep Slate */
+}
+
+.frame-9 .text-side {
+    background: linear-gradient(135deg, #451a03 0%, #92400e 100%);
+    /* Rich Bronze */
+}
+
 .gallery-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -1002,4 +1373,116 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
     pointer-events: none;
+}
+
+/* ============================================
+   VIDEO WISH SECTION - Fullscreen Background
+   ============================================ */
+.video-wish-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    background: #0a0a0a;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+/* Background Video */
+.video-wish-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.7);
+}
+
+/* Elegant Overlay */
+.video-wish-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top,
+            rgba(10, 10, 10, 0.8) 0%,
+            rgba(10, 10, 10, 0.3) 50%,
+            rgba(10, 10, 10, 0.6) 100%);
+    z-index: 2;
+}
+
+/* Message Content */
+.video-wish-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.video-message-bar {
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(20px);
+    border-top: 3px solid rgba(255, 215, 0, 0.5);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(255, 215, 0, 0.3);
+    text-align: center;
+}
+
+.video-typing-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--color-gold);
+    line-height: 1.6;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+.video-typing-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments for video section */
+@media (max-width: 768px) {
+    .video-message-bar {
+        padding: var(--spacing-md);
+    }
+
+    .video-typing-text {
+        font-size: 1.2rem;
+        min-height: 40px;
+    }
 }

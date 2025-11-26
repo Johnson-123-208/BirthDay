@@ -33,31 +33,40 @@
 
 
     <!-- ========================================
-         LANDING SECTION - Fullscreen Video Hero
+         CINEMATIC HERO SECTION - Premium Tribute
          ======================================== -->
     <section id="hero" class="hero-section">
-        <!-- Background Video -->
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="./assets/bg.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Animated Background Gradient -->
+        <div class="hero-background-layer"></div>
 
-        <!-- Overlay for readability -->
-        <div class="hero-overlay"></div>
+        <!-- Mouse Glow Follower -->
+        <div class="mouse-glow" id="mouseGlow"></div>
 
-        <!-- Floating particles -->
-
+        <!-- Spotlight Effect -->
+        <div class="hero-spotlight"></div>
 
         <!-- Hero Content -->
         <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-line">HAPPY BIRTHDAY</span>
-                <span class="title-name">VIJAY SIR</span>
-            </h1>
-            <p class="hero-subtitle">Journey Through Memories</p>
-            <div class="scroll-indicator">
-                <div class="scroll-arrow"></div>
+            <div class="hero-text-container">
+                <p class="hero-greeting">HAPPY BIRTHDAY</p>
+                <h1 class="hero-name" id="heroName"></h1>
             </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         BIBLE VERSE SECTION - Next to Hero
+         ======================================== -->
+    <section id="bible-verse" class="bible-verse-section">
+        <div class="bible-verse-content">
+            <h2 class="bible-verse-title">Wishes from Verse</h2>
+            <p class="bible-verse-text" id="bibleVerseText"></p>
+            <p class="bible-verse-reference" id="bibleVerseRef"></p>
         </div>
     </section>
 
@@ -152,178 +161,212 @@
          Using the 7 provided images
          ======================================== -->
 
-    <!-- Wish 1 - Image Left, Text Right -->
+    <!-- Wish 1 - Raj Ganta -->
     <section class="wish-frame frame-1">
         <div class="side left image-side">
             <div class="image-container">
-                <img src="./assets/1.jpeg" alt="Team Member" class="employee-photo">
+                <img src="./assets/1.jpeg" alt="Raj Ganta" class="employee-photo">
             </div>
         </div>
         <div class="side right text-side">
             <div class="wish-content">
                 <p class="wish-text">
-                    "Happy Birthday, Vijay Sir! Your leadership and vision inspire us every day.
-                    Thank you for being an incredible mentor and guiding light.
-                    Wishing you a year filled with success, joy, and endless possibilities!"
+                    "May the LORD answer you when you are in distress; may the name of the God of Jacob protect you. May
+                    he send you help from the sanctuary and grant you support from Zion. May he remember all your
+                    sacrifices and accept your burnt offerings. May he give you the desire of your heart and make all
+                    your plans succeed. May we shout for joy over your victory and lift up our banners in the name of
+                    our God."
                 </p>
-                <p class="employee-name">— From Your Team</p>
+                <p class="employee-name">— Raj Ganta</p>
+                <!-- <p class="bible-reference">Psalm 20:1-5</p> -->
             </div>
         </div>
     </section>
 
-    <!-- Wish 2 - Text Left, Image Right -->
+    <!-- Wish 2 - Saradhi (Accountant) -->
     <section class="wish-frame frame-2">
         <div class="side left text-side">
             <div class="wish-content">
                 <p class="wish-text">
-                    "Your dedication and passion for excellence motivate us to reach new heights.
-                    Thank you for always believing in us and pushing us to be our best.
-                    May this year bring you immense joy and fulfillment!"
+                    "Happy Birthday Sir! Your patience and understanding make our workplace feel like family. Thank you
+                    for always being approachable and for the wisdom you share with us. Wishing you good health, joy,
+                    and many more years of success!"
                 </p>
-                <p class="employee-name">— SAM JOEL</p>
+                <p class="employee-name">— Saradhi</p>
             </div>
         </div>
         <div class="side right image-side">
             <div class="image-container">
-                <img src="./assets/2.jpeg" alt="Team Member" class="employee-photo">
+                <img src="./assets/2.jpeg" alt="Saradhi" class="employee-photo">
             </div>
         </div>
     </section>
 
-    <!-- Wish 3 - Image Left, Text Right -->
+    <!-- Wish 3 - Esther Rani -->
     <section class="wish-frame frame-3">
         <div class="side left image-side">
             <div class="image-container">
-                <img src="./assets/3.jpeg" alt="Team Member" class="employee-photo">
+                <img src="./assets/3.jpeg" alt="Esther Rani" class="employee-photo">
             </div>
         </div>
         <div class="side right text-side">
             <div class="wish-content">
                 <p class="wish-text">
-                    "Working under your guidance has been a privilege and an honor.
-                    Your wisdom and kindness make every challenge feel conquerable.
-                    Wishing you a birthday as wonderful as you are!"
+                    "Every day with you as our leader is a learning experience. Your patience, guidance, and support
+                    mean the world to us. Wishing you health, happiness, and continued success!"
                 </p>
-                <p class="employee-name">— Your Admiring Team</p>
+                <p class="employee-name">— Esther Rani</p>
             </div>
         </div>
     </section>
 
-    <!-- Wish 4 - Text Left, Image Right -->
+    <!-- Wish 4 - Venu (Full Stack Developer) -->
     <section class="wish-frame frame-4">
         <div class="side left text-side">
             <div class="wish-content">
                 <p class="wish-text">
-                    "You've created not just a workplace, but a family where everyone feels valued.
-                    Your empathy and understanding make all the difference.
-                    Here's to another year of amazing achievements!"
+                    "Sir, the way you encourage us to think creatively and solve problems has shaped me as a developer.
+                    Your support means everything to our team. Happy Birthday! Hope this year brings you all the
+                    happiness you deserve."
                 </p>
-                <p class="employee-name">— With Love and Respect</p>
+                <p class="employee-name">— Venu</p>
             </div>
         </div>
         <div class="side right image-side">
             <div class="image-container">
-                <img src="./assets/4.jpeg" alt="Team Member" class="employee-photo">
+                <img src="./assets/4.jpeg" alt="Venu" class="employee-photo">
             </div>
         </div>
     </section>
 
-    <!-- Wish 5 - Image Left, Text Right -->
+    <!-- Wish 5 - Santhoshi (Backend Developer) -->
     <section class="wish-frame frame-5">
         <div class="side left image-side">
             <div class="image-container">
-                <img src="./assets/5.jpeg" alt="Team Member" class="employee-photo">
+                <img src="./assets/5.jpeg" alt="Santhoshi" class="employee-photo">
             </div>
         </div>
         <div class="side right text-side">
             <div class="wish-content">
                 <p class="wish-text">
-                    "Your innovative thinking and forward vision continue to inspire us all.
-                    Thank you for leading by example and showing us what true leadership means.
-                    May your birthday be filled with laughter and joy!"
+                    "Happy Birthday Sir! Thank you for believing in me and giving me opportunities to grow. Your
+                    mentorship has helped me become a better developer and person. Wishing you a wonderful year ahead
+                    filled with joy and success!"
                 </p>
-                <p class="employee-name">— Your Inspired Team</p>
+                <p class="employee-name">— Santhoshi</p>
             </div>
         </div>
     </section>
 
-    <!-- Wish 6 - Text Left, Image Right -->
+    <!-- Wish 6 - Venkatesh (Tester) -->
     <section class="wish-frame frame-6">
         <div class="side left text-side">
             <div class="wish-content">
                 <p class="wish-text">
-                    "Every day with you as our leader is a learning experience.
-                    Your patience, guidance, and support mean the world to us.
-                    Wishing you health, happiness, and continued success!"
+                    "Sir, your attention to detail and quality-first approach has taught me so much about excellence.
+                    Thank you for creating an environment where we can learn and grow. Happy Birthday! May you have an
+                    amazing year ahead!"
                 </p>
-                <p class="employee-name">— Forever Grateful</p>
+                <p class="employee-name">— Venkatesh</p>
             </div>
         </div>
         <div class="side right image-side">
             <div class="image-container">
-                <img src="./assets/6.jpeg" alt="Team Member" class="employee-photo">
+                <img src="./assets/6.jpeg" alt="Venkatesh" class="employee-photo">
             </div>
         </div>
     </section>
 
-    <!-- Wish 7 - Image Left, Text Right -->
+    <!-- Wish 7 - Sam Joel (Digital Marketing Specialist) -->
     <section class="wish-frame frame-7">
         <div class="side left image-side">
             <div class="image-container">
-                <img src="./assets/7.jpeg" alt="Team Member" class="employee-photo">
+                <img src="./assets/7.jpeg" alt="Sam Joel" class="employee-photo">
             </div>
         </div>
         <div class="side right text-side">
             <div class="wish-content">
                 <p class="wish-text">
-                    "Thank you for being the heart and soul of our organization.
-                    Your positive energy and unwavering commitment inspire us daily.
-                    Here's to celebrating you today and always!"
+                    "Wishing you a Blessed Birthday Preetam Anna, May God Continue to Bless you and make you a Blessing
+                    to many in the days to come!"
                 </p>
-                <p class="employee-name">— Your Devoted Team</p>
+                <p class="employee-name">— Sam Joel</p>
             </div>
         </div>
     </section>
 
+    <!-- Wish 8 - Sandeep (Senior AIML Engineer) -->
+    <section class="wish-frame frame-8">
+        <div class="side left text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "Happy Birthday Sir! Your openness to innovation and cutting-edge tech keeps us motivated to push
+                    boundaries. Thanks for trusting us with challenging projects. Wishing you an incredible year ahead
+                    full of breakthroughs and happiness!"
+                </p>
+                <p class="employee-name">— Sandeep</p>
+            </div>
+        </div>
+        <div class="side right image-side">
+            <div class="image-container">
+                <img src="./assets/1.jpeg" alt="Sandeep" class="employee-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Wish 9 - Johnson (AIML Engineer & Full Stack Developer) -->
+    <section class="wish-frame frame-9">
+        <div class="side left image-side">
+            <div class="image-container">
+                <img src="./assets/2.jpeg" alt="Johnson" class="employee-photo">
+            </div>
+        </div>
+        <div class="side right text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "Happy Birthday Sir! I am deeply grateful for the opportunities you have given me and for your
+                    openness to my ideas. Thank you for your trust and guidance. Wishing you a wonderful year ahead!"
+                </p>
+                <p class="employee-name">— Johnson</p>
+            </div>
+        </div>
+    </section>
 
 
     <!-- ========================================
-         INSPIRATIONAL QUOTES CAROUSEL
+         SPECIAL VIDEO WISH SECTION - Fullscreen
          ======================================== -->
-    <section class="quotes-section">
-        <div class="quotes-container">
-            <div class="quote-carousel">
-                <div class="quote-slide active">
-                    <p class="quote-text">"The LORD bless you and keep you; the LORD make his face shine on you and be
-                        gracious to you."</p>
-                    <p class="quote-author">— Numbers 6:24-25</p>
-                </div>
-                <div class="quote-slide">
-                    <p class="quote-text">"May He give you the desire of your heart and make all your plans succeed."
-                    </p>
-                    <p class="quote-author">— Psalm 20:4</p>
-                </div>
-                <div class="quote-slide">
-                    <p class="quote-text">"Beloved, I pray that all may go well with you and that you may be in good
-                        health, as it goes well with your soul."</p>
-                    <p class="quote-author">— 3 John 1:2</p>
-                </div>
-            </div>
-            <div class="quote-dots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
+    <section class="video-wish-section">
+        <!-- Background Video -->
+        <video class="video-wish-bg" id="wishVideo" autoplay muted loop playsinline>
+            <source src="./assets/bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Elegant Overlay -->
+        <div class="video-wish-overlay"></div>
+
+        <!-- Video Audio Toggle Button -->
+        <button id="videoAudioToggle" class="video-audio-toggle" aria-label="Toggle Video Audio">
+            <span class="audio-icon">🔇</span>
+        </button>
+
+        <!-- Message Content - Horizontal Bar -->
+        <div class="video-wish-content">
+            <div class="video-message-bar">
+                <p class="video-typing-text" id="typingText"></p>
             </div>
         </div>
     </section>
+
 
     <!-- ========================================
          FINAL CELEBRATION SECTION WITH FIREWORKS
          ======================================== -->
     <section id="finale" class="finale-section">
         <div class="finale-content">
-            <h2 class="finale-title">ONCE AGAIN HAPPY BIRTHDAY SIR ❤️</h2>
-            <p class="finale-subtitle">From your entire team</p>
+            <h2 class="finale-title">WE LOVE YOU SIR ❤️</h2>
+            <p class="finale-subtitle">From your entire Naarsoft team</p>
             <button class="fireworks-button" id="fireworksButton">🎆 Launch Fireworks</button>
         </div>
 

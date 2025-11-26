@@ -25,13 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register GSAP ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
+    // Preload images for faster loading
+    preloadImages();
+
     // Initialize all features
     initHeroAnimations();
-
+    initBibleVerseTyping();
+    initTypingAnimation();
+    initVideoAudioToggle();
     initStatsCounter();
     initGalleryAnimations();
     initWishSectionAnimations();
-    initQuotesCarousel();
     initFinaleAnimations();
     initConfetti();
     initFireworks();
@@ -39,42 +43,333 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// HERO SECTION ANIMATIONS
+// IMAGE PRELOADING FOR FASTER LOADING
+// ============================================
+function preloadImages() {
+    const imageUrls = [
+        './assets/1.jpeg',
+        './assets/2.jpeg',
+        './assets/3.jpeg',
+        './assets/4.jpeg',
+        './assets/5.jpeg',
+        './assets/6.jpeg',
+        './assets/7.jpeg'
+    ];
+
+    imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+}
+
+// ============================================
+// CINEMATIC HERO ANIMATIONS
 // ============================================
 function initHeroAnimations() {
-    const heroTitle = document.querySelector('.hero-title');
-    const heroSubtitle = document.querySelector('.hero-subtitle');
-    const scrollIndicator = document.querySelector('.scroll-indicator');
+    // Typewriter animation for hero name
+    const heroNameElement = document.getElementById('heroName');
+    if (heroNameElement) {
+        const fullText = 'Vijay Sir';
+        let charIndex = 0;
 
-    const heroTimeline = gsap.timeline({
-        defaults: { ease: 'power3.out' }
+        // Typewriter effect - SPEED: Adjust delay for faster/slower typing
+        function typeWriter() {
+            if (charIndex < fullText.length) {
+                heroNameElement.textContent += fullText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 150); // 150ms per character - MODIFY THIS for speed
+            }
+        }
+
+        // Start typewriter after initial fade-in
+        setTimeout(typeWriter, 1500);
+    }
+
+    // Mouse glow follower effect - Premium positioning
+    const mouseGlow = document.getElementById('mouseGlow');
+
+    if (mouseGlow) {
+        let mouseX = 0;
+        let mouseY = 0;
+        let glowX = 0;
+        let glowY = 0;
+
+        // Track mouse position globally
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            mouseGlow.style.opacity = '1';
+        });
+
+        // Hide glow when mouse leaves window
+        document.addEventListener('mouseleave', () => {
+            mouseGlow.style.opacity = '0';
+        });
+
+        // Smooth follow animation with easing
+        function animateGlow() {
+            const ease = 0.12; // Smooth, luxurious follow speed
+
+            glowX += (mouseX - glowX) * ease;
+            glowY += (mouseY - glowY) * ease;
+
+            // Center the glow on cursor (already handled by translate(-50%, -50%) in CSS)
+            mouseGlow.style.left = `${glowX}px`;
+            mouseGlow.style.top = `${glowY}px`;
+
+            requestAnimationFrame(animateGlow);
+        }
+
+        animateGlow();
+    }
+}
+
+// ============================================
+// BIBLE VERSE TYPING ANIMATION
+// ============================================
+function initBibleVerseTyping() {
+    const verseTextElement = document.getElementById('bibleVerseText');
+    const verseRefElement = document.getElementById('bibleVerseRef');
+
+    if (!verseTextElement || !verseRefElement) return;
+
+    const verses = [
+        {
+            text: '"The LORD bless you and keep you; the LORD make his face shine on you and be gracious to you."',
+            ref: '— Numbers 6:24-25'
+        },
+        {
+            text: '"May He give you the desire of your heart and make all your plans succeed."',
+            ref: '— Psalm 20:4'
+        },
+        {
+            text: '"Beloved, I pray that all may go well with you and that you may be in good health, as it goes well with your soul."',
+            ref: '— 3 John 1:2'
+        }
+    ];
+
+    let currentVerseIndex = 0;
+    let charIndex = 0;
+    let isTyping = true;
+
+    function typeVerse() {
+        const currentVerse = verses[currentVerseIndex];
+
+        if (isTyping) {
+            if (charIndex < currentVerse.text.length) {
+                verseTextElement.textContent = currentVerse.text.substring(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeVerse, 40); // Typing speed
+            } else {
+                // Show reference after text is complete
+                verseRefElement.textContent = currentVerse.ref;
+                verseRefElement.style.opacity = '1';
+                // Pause before next verse
+                setTimeout(() => {
+                    isTyping = false;
+                    typeVerse();
+                }, 4000); // Display time
+            }
+        } else {
+            // Erase current verse
+            if (charIndex > 0) {
+                verseTextElement.textContent = currentVerse.text.substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(typeVerse, 20); // Erasing speed
+            } else {
+                // Move to next verse
+                verseRefElement.style.opacity = '0';
+                currentVerseIndex = (currentVerseIndex + 1) % verses.length;
+                isTyping = true;
+                setTimeout(typeVerse, 500);
+            }
+        }
+    }
+
+    // Start typing after a delay
+    setTimeout(typeVerse, 1000);
+}
+
+// ============================================
+// VIDEO AUDIO TOGGLE
+// ============================================
+function initVideoAudioToggle() {
+    const videoAudioButton = document.getElementById('videoAudioToggle');
+    const wishVideo = document.getElementById('wishVideo');
+    const musicToggle = document.getElementById('musicToggle');
+
+    if (!videoAudioButton || !wishVideo) return;
+
+    let isVideoAudioOn = false;
+    let playCount = 0;
+    const maxPlays = 3;
+
+    // Remove the loop attribute since we'll control it manually
+    wishVideo.removeAttribute('loop');
+
+    videoAudioButton.addEventListener('click', () => {
+        isVideoAudioOn = !isVideoAudioOn;
+
+        if (isVideoAudioOn) {
+            // Reset play count and start playing
+            playCount = 0;
+            wishVideo.muted = false;
+            wishVideo.currentTime = 0; // Start from beginning
+            wishVideo.play();
+
+            videoAudioButton.classList.add('active');
+            videoAudioButton.querySelector('.audio-icon').textContent = '🔊';
+
+            // Pause background music if it's playing
+            if (window.bgMusic && !window.bgMusic.paused) {
+                window.bgMusic.pause();
+                if (musicToggle) {
+                    musicToggle.classList.remove('playing');
+                }
+            }
+        } else {
+            // Mute video
+            wishVideo.muted = true;
+            videoAudioButton.classList.remove('active');
+            videoAudioButton.querySelector('.audio-icon').textContent = '🔇';
+            playCount = 0;
+        }
     });
 
-    heroTimeline
-        .fromTo(heroTitle,
-            { opacity: 0, scale: 0.8, y: 50 },
-            { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: 'back.out(1.2)' }
-        )
-        .fromTo(heroSubtitle,
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 1 },
-            '-=0.5'
-        )
-        .fromTo(scrollIndicator,
-            { opacity: 0, y: -20 },
-            { opacity: 1, y: 0, duration: 1 },
-            '-=0.5'
-        );
+    // Listen for video end event to count plays
+    wishVideo.addEventListener('ended', () => {
+        if (isVideoAudioOn) {
+            playCount++;
 
-    // Floating animation
-    gsap.to('.title-name', {
-        y: -10,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 2
+            if (playCount < maxPlays) {
+                // Play again
+                wishVideo.currentTime = 0;
+                wishVideo.play();
+            } else {
+                // Reached max plays, turn off audio
+                wishVideo.muted = true;
+                videoAudioButton.classList.remove('active');
+                videoAudioButton.querySelector('.audio-icon').textContent = '🔇';
+                isVideoAudioOn = false;
+                playCount = 0;
+
+                // Reset video to loop silently
+                wishVideo.currentTime = 0;
+                wishVideo.setAttribute('loop', 'loop');
+                wishVideo.play();
+            }
+        }
     });
+
+    // Auto-pause video audio when scrolling away from video section
+    const videoSection = document.querySelector('.video-wish-section');
+    if (videoSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting && isVideoAudioOn) {
+                    // Video section is not visible, mute it
+                    wishVideo.muted = true;
+                    videoAudioButton.classList.remove('active');
+                    videoAudioButton.querySelector('.audio-icon').textContent = '🔇';
+                    isVideoAudioOn = false;
+                    playCount = 0;
+
+                    // Reset video to loop silently
+                    wishVideo.setAttribute('loop', 'loop');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(videoSection);
+    }
+}
+
+// ============================================
+// HERO CONFETTI CELEBRATION
+// ============================================
+function initHeroConfetti() {
+    const container = document.getElementById('heroConfetti');
+    if (!container) return;
+
+    const colors = ['#ffd700', '#ff6b9d', '#d4af37', '#ffed4e', '#ff1493'];
+
+    function createHeroConfetti() {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = '8px';
+        confetti.style.height = '8px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-10px';
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        confetti.style.opacity = '0';
+        confetti.style.animation = `confettiFall ${3 + Math.random() * 4}s linear forwards`;
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+
+        container.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 7000);
+    }
+
+    // Create confetti periodically
+    setInterval(createHeroConfetti, 300);
+
+    // Initial burst
+    for (let i = 0; i < 30; i++) {
+        setTimeout(createHeroConfetti, i * 50);
+    }
+}
+
+// ============================================
+// TYPING ANIMATION FOR VIDEO MESSAGES
+// ============================================
+function initTypingAnimation() {
+    const textElement = document.getElementById('typingText');
+    if (!textElement) return;
+
+    const messages = [
+        "May this special day bring you endless joy, success, and happiness.",
+        "Your leadership and wisdom inspire us every single day.",
+        "Thank you for being an incredible mentor and guiding light.",
+        "Wishing you a year filled with amazing achievements and blessings.",
+        "Here's to celebrating you today and always!"
+    ];
+
+    let messageIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentMessage = messages[messageIndex];
+
+        if (!isDeleting) {
+            // Typing
+            textElement.textContent = currentMessage.substring(0, charIndex + 1);
+            charIndex++;
+
+            if (charIndex === currentMessage.length) {
+                // Pause at end
+                setTimeout(() => { isDeleting = true; }, 3000);
+                return;
+            }
+            setTimeout(type, 50);
+        } else {
+            // Deleting
+            textElement.textContent = currentMessage.substring(0, charIndex - 1);
+            charIndex--;
+
+            if (charIndex === 0) {
+                isDeleting = false;
+                messageIndex = (messageIndex + 1) % messages.length;
+                setTimeout(type, 500);
+                return;
+            }
+            setTimeout(type, 30);
+        }
+    }
+
+    // Start typing animation
+    setTimeout(type, 1000);
 }
 
 // ============================================
@@ -567,18 +862,6 @@ function initMusicPlayer() {
     });
 }
 
-// ============================================
-// VIDEO PLAYBACK OPTIMIZATION
-// ============================================
-const heroVideo = document.querySelector('.hero-video');
-if (heroVideo) {
-    heroVideo.play().catch(error => {
-        console.log('Video autoplay prevented:', error);
-        document.addEventListener('click', () => {
-            heroVideo.play();
-        }, { once: true });
-    });
-}
 
 // ============================================
 // CONSOLE EASTER EGG
