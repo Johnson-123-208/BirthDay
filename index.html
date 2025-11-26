@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Vijay Sir | Journey Through Memories</title>
+    <meta name="description" content="A special birthday celebration for our beloved CEO - Journey Through Memories">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+
+<body>
+
+    <!-- ========================================
+         MUSIC PLAYER - Background Birthday Music
+         ======================================== -->
+    <button id="musicToggle" class="music-toggle" aria-label="Toggle Music">
+        <span class="music-icon">🎵</span>
+    </button>
+
+    <!-- ========================================
+         FLOATING BALLOONS DECORATION
+         ======================================== -->
+
+
+    <!-- ========================================
+         LANDING SECTION - Fullscreen Video Hero
+         ======================================== -->
+    <section id="hero" class="hero-section">
+        <!-- Background Video -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="./assets/bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Overlay for readability -->
+        <div class="hero-overlay"></div>
+
+        <!-- Floating particles -->
+
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">HAPPY BIRTHDAY</span>
+                <span class="title-name">VIJAY SIR</span>
+            </h1>
+            <p class="hero-subtitle">Journey Through Memories</p>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         ACHIEVEMENTS SECTION - Animated Statistics
+         ======================================== -->
+    <!--
+    <section class="stats-section">
+        <div class="stats-container">
+            <h2 class="section-title">A Legacy of Excellence</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Years of Leadership</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Team Members Inspired</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number" data-target="1000">0</div>
+                    <div class="stat-label">Smiles Created</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- ========================================
+         PHOTO GALLERY SECTION - Team Memories
+         ======================================== -->
+    <!--
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <h2 class="section-title">Moments We Cherish</h2>
+            <p class="section-subtitle">Capturing the journey together</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-index="0">
+                    <img src="./assets/1.jpeg" alt="Memory 1" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Memorable Moment</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="1">
+                    <img src="./assets/2.jpeg" alt="Memory 2" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Team Celebration</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="2">
+                    <img src="./assets/3.jpeg" alt="Memory 3" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Success Together</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="3">
+                    <img src="./assets/4.jpeg" alt="Memory 4" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Inspiring Leadership</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="4">
+                    <img src="./assets/5.jpeg" alt="Memory 5" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Joyful Times</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="5">
+                    <img src="./assets/6.jpeg" alt="Memory 6" class="gallery-image">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Unforgettable Memories</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+
+
+    <!-- ========================================
+         TEAM WISHES SECTIONS
+         Using the 7 provided images
+         ======================================== -->
+
+    <!-- Wish 1 - Image Left, Text Right -->
+    <section class="wish-frame frame-1">
+        <div class="side left image-side">
+            <div class="image-container">
+                <img src="./assets/1.jpeg" alt="Team Member" class="employee-photo">
+            </div>
+        </div>
+        <div class="side right text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "Happy Birthday, Vijay Sir! Your leadership and vision inspire us every day.
+                    Thank you for being an incredible mentor and guiding light.
+                    Wishing you a year filled with success, joy, and endless possibilities!"
+                </p>
+                <p class="employee-name">— From Your Team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wish 2 - Text Left, Image Right -->
+    <section class="wish-frame frame-2">
+        <div class="side left text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "Your dedication and passion for excellence motivate us to reach new heights.
+                    Thank you for always believing in us and pushing us to be our best.
+                    May this year bring you immense joy and fulfillment!"
+                </p>
+                <p class="employee-name">— SAM JOEL</p>
+            </div>
+        </div>
+        <div class="side right image-side">
+            <div class="image-container">
+                <img src="./assets/2.jpeg" alt="Team Member" class="employee-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Wish 3 - Image Left, Text Right -->
+    <section class="wish-frame frame-3">
+        <div class="side left image-side">
+            <div class="image-container">
+                <img src="./assets/3.jpeg" alt="Team Member" class="employee-photo">
+            </div>
+        </div>
+        <div class="side right text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "Working under your guidance has been a privilege and an honor.
+                    Your wisdom and kindness make every challenge feel conquerable.
+                    Wishing you a birthday as wonderful as you are!"
+                </p>
+                <p class="employee-name">— Your Admiring Team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wish 4 - Text Left, Image Right -->
+    <section class="wish-frame frame-4">
+        <div class="side left text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "You've created not just a workplace, but a family where everyone feels valued.
+                    Your empathy and understanding make all the difference.
+                    Here's to another year of amazing achievements!"
+                </p>
+                <p class="employee-name">— With Love and Respect</p>
+            </div>
+        </div>
+        <div class="side right image-side">
+            <div class="image-container">
+                <img src="./assets/4.jpeg" alt="Team Member" class="employee-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Wish 5 - Image Left, Text Right -->
+    <section class="wish-frame frame-5">
+        <div class="side left image-side">
+            <div class="image-container">
+                <img src="./assets/5.jpeg" alt="Team Member" class="employee-photo">
+            </div>
+        </div>
+        <div class="side right text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "Your innovative thinking and forward vision continue to inspire us all.
+                    Thank you for leading by example and showing us what true leadership means.
+                    May your birthday be filled with laughter and joy!"
+                </p>
+                <p class="employee-name">— Your Inspired Team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wish 6 - Text Left, Image Right -->
+    <section class="wish-frame frame-6">
+        <div class="side left text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "Every day with you as our leader is a learning experience.
+                    Your patience, guidance, and support mean the world to us.
+                    Wishing you health, happiness, and continued success!"
+                </p>
+                <p class="employee-name">— Forever Grateful</p>
+            </div>
+        </div>
+        <div class="side right image-side">
+            <div class="image-container">
+                <img src="./assets/6.jpeg" alt="Team Member" class="employee-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Wish 7 - Image Left, Text Right -->
+    <section class="wish-frame frame-7">
+        <div class="side left image-side">
+            <div class="image-container">
+                <img src="./assets/7.jpeg" alt="Team Member" class="employee-photo">
+            </div>
+        </div>
+        <div class="side right text-side">
+            <div class="wish-content">
+                <p class="wish-text">
+                    "Thank you for being the heart and soul of our organization.
+                    Your positive energy and unwavering commitment inspire us daily.
+                    Here's to celebrating you today and always!"
+                </p>
+                <p class="employee-name">— Your Devoted Team</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ========================================
+         INSPIRATIONAL QUOTES CAROUSEL
+         ======================================== -->
+    <section class="quotes-section">
+        <div class="quotes-container">
+            <div class="quote-carousel">
+                <div class="quote-slide active">
+                    <p class="quote-text">"The LORD bless you and keep you; the LORD make his face shine on you and be
+                        gracious to you."</p>
+                    <p class="quote-author">— Numbers 6:24-25</p>
+                </div>
+                <div class="quote-slide">
+                    <p class="quote-text">"May He give you the desire of your heart and make all your plans succeed."
+                    </p>
+                    <p class="quote-author">— Psalm 20:4</p>
+                </div>
+                <div class="quote-slide">
+                    <p class="quote-text">"Beloved, I pray that all may go well with you and that you may be in good
+                        health, as it goes well with your soul."</p>
+                    <p class="quote-author">— 3 John 1:2</p>
+                </div>
+            </div>
+            <div class="quote-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FINAL CELEBRATION SECTION WITH FIREWORKS
+         ======================================== -->
+    <section id="finale" class="finale-section">
+        <div class="finale-content">
+            <h2 class="finale-title">ONCE AGAIN HAPPY BIRTHDAY SIR ❤️</h2>
+            <p class="finale-subtitle">From your entire team</p>
+            <button class="fireworks-button" id="fireworksButton">🎆 Launch Fireworks</button>
+        </div>
+
+        <!-- Confetti Container -->
+        <div class="confetti-container" id="confettiContainer"></div>
+
+        <!-- Fireworks Container -->
+        <canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
+    </section>
+
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>
